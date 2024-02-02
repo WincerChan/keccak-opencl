@@ -7,7 +7,7 @@ extern crate hashes;
 extern crate ocl;
 extern crate sha3;
 
-const GLOBAL_WORK_SIZE: usize = 320000;
+const GLOBAL_WORK_SIZE: usize = 5120000;
 const LOCAL_WORK_SIZE: usize = 32;
 
 fn gpu_keccak(samples: &[[u8; 4]]) -> Vec<u8> {
@@ -66,16 +66,15 @@ fn cpu_keccak(samples: &[[u8; 4]]) -> Vec<[u8; 32]> {
         let ret: [u8; 32] = keccak.finalize().into();
         output.push(ret);
     }
-    println!("{:?}", output[0]);
     println!("cpu keccak elapsed: {:?}", start.elapsed());
     output
 }
 
 fn generate_samples() -> Vec<[u8; 4]> {
     let mut vec = Vec::new();
-    for i in 0..100u8 {
-        for j in 0..100u8 {
-            for k in 0..32u8 {
+    for i in 0..200u8 {
+        for j in 0..200u8 {
+            for k in 0..128u8 {
                 vec.push([i, j, k, 0]);
             }
         }
