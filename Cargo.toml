@@ -1,0 +1,11 @@
+[package]
+name = "keccak-opencl"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ocl = "0.19.6"
+hashes = "0.1.9"
+sha3 = "0.10.8"
